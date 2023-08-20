@@ -1,0 +1,542 @@
+"Begin run...".println();
+//showAllBlockInfotation();
+transform();
+"Run done!".println();
+
+operation transform(){
+	var blocks = getAllBlocks();
+	var DTPackages = createDigitalTwinPackage();
+	var cpRoot = DTPackages.initComponentPackage();   //<！！！！！
+	//create Components
+	var root = cpRoot.createRootComponent();
+	root.fillComponentRoot(blocks);            //<！！！！！
+	//create Terms
+	var terminologyPackage = DTPackages.initTerminologyPackage();
+	terminologyPackage.fillTerminologyPackage(root, blocks);
+	//create Inputs, Outputs, LConn, RConn
+	root.createPorts(blocks);
+	//create ComponentRelationships
+	var UsedPortsGid = new Sequence;
+	for (block in blocks){
+		if (block.relationshipIsExisted()){
+			var component = root.getComponentByBlock(block);
+			var structs = block.getStructs();
+			//create DirectedRelationships
+			if (structs.directed.notEmpty()){
+				root.createDirectedRelationships(component.outputs, structs.directed);
+			}
+			//create UndirectedRelationships
+			if (structs.undirected.notEmpty()){
+				for (i in structs.undirected.getLoopSequence()){
+					if (i.isLeftPorts(component)){
+						root.createUndirectedRelationships(component.getLeftPort(i), structs.undirected[i], UsedPortsGid);
+					}
+					else{
+						root.createUndirectedRelationships(component.getRightPort(i), structs.undirected[i], UsedPortsGid);
+					}
+				}
+			}
+		}
+	}
+}
+
+operation T!Component getLeftPort(i){
+	return self.lports[i];
+}
+
+operation T!Component getRightPort(i){
+	return self.rports[i - self.lports.size()];
+}
+
+operation Any getLoopSequence(){
+	return Sequence{0..self.asSequence().size() - 1};
+}
+
+operation Real isLeftPorts(component : T!Component){
+	return (self < component.lports.size());
+}
+
+operation Any getStructs(){
+	var structs = Tuple{"directed" = Sequence{}, "undirected" = Sequence{}};
+	var allStructs = self.getConnectivity().select(e|e.DstBlock <> null);
+	for (i in Sequence{0..allStructs.getObjectNumber() - 1}){
+		if (i < self.getBlockOutportNumber()){
+			structs.directed.add(allStructs[i]);
+		}
+		else{
+			structs.undirected.add(allStructs[i]);
+		}
+	}
+	return structs;
+}
+
+operation Any getBlockOutportNumber(){
+	return self.getPortHandles().Outport.getObjectNumber();
+}
+
+operation T!Component getComponentByBlock(block : Any){
+	return self.getComponentByGid(block.getBlockGid());
+}
+
+operation T!Component createPorts(blocks : Any){
+	for (block in blocks){
+		var component = self.getComponentByBlock(block);
+		var portHandles = block.getPortHandles();
+		if (portHandles.IsUnrecognized()){
+			"Unrecognized port exists.".errln();
+			return null;
+		}
+		component.createInports(portHandles.Inport);
+		component.createOutports(portHandles.Outport);
+		component.createLPorts(portHandles.LConn);
+		component.createRPorts(portHandles.RConn);
+	}
+}
+
+operation Any IsUnrecognized(){
+	if (self.Enable = null and self.Trigger = null and self.State = null and self.Ifaction = null and self.Reset = null and self.Event = null){
+		return false;
+	}
+	else{
+		return true;
+	}
+}
+
+operation T!Component createDirectedRelationships(outputs : Any, directedStructs : Any){
+	for (i in Sequence{0..(directedStructs.size() - 1)}){
+		if (directedStructs[i].IsOnlyOneDstBlock()){
+			self.createSingleDirectedRelationship(outputs[i], directedStructs[i]);
+		}
+		else{
+			self.createMutiDirectedRelationship(outputs[i], directedStructs[i]);
+		}
+	}
+}
+
+operation T!Component createUndirectedRelationships(port, undirectedStruct : Any, UsedPortsGid : Sequence){
+	if (port.gid.IsExistedIn(UsedPortsGid)){
+		return null;
+	}
+	if (undirectedStruct.IsOnlyOneDstBlock()){
+		self.createSingleUndirectedRelationship(port, undirectedStruct, UsedPortsGid);
+	}
+	else{
+		self.createMutiUndirectedRelationship(port, undirectedStruct, UsedPortsGid);
+	}
+}
+
+operation String IsExistedIn(UsedPortsGid : Sequence){
+	return UsedPortsGid.includes(self);
+}
+
+operation T!Component createMutiUndirectedRelationship(port : T!ComponentElement, struct : Any, UsedPortsGid : Sequence){
+	var switchNode =  self.createSwitch();
+	var ur = self.createUndirectedRelationship(port, switchNode);
+	UsedPortsGid.add(port.gid);
+	switchNode.ports.add(port);
+	for (j in struct.DstBlock.getLoopSequence()){
+		var targetComponent = self.getComponentByGid(struct.DstBlock[j].asString());
+		var portNumber = struct.DstPort[j].asString();
+		var targetLPort = targetComponent.lports.select(e|e.gid = portNumber).first();
+		var targetRPort = targetComponent.rports.select(e|e.gid = portNumber).first();
+		if (targetLPort <> null){
+			self.createUndirectedRelationship(switchNode, targetLPort);
+			UsedPortsGid.add(targetLPort.gid);
+			switchNode.ports.add(targetLPort);
+		}
+		else if (targetRPort <> null){
+			self.createUndirectedRelationship(switchNode, targetRPort);
+			UsedPortsGid.add(targetRPort.gid);
+			switchNode.ports.add(targetRPort);
+		}
+	}
+}
+
+operation T!Component createUndirectedRelationship(port_1 : T!ComponentElement, port_2 : T!ComponentElement){
+	var undirectedRelationship = new T!UndirectedRelationship;
+	undirectedRelationship.source = port_1;
+	undirectedRelationship.target = port_2;
+	self.sub_components.add(undirectedRelationship);
+	return undirectedRelationship;
+}
+
+operation T!Component createSingleUndirectedRelationship(port : T!ComponentElement, struct : Any, UsedPortsGid : Sequence){
+	var targetComponent = self.getComponentByGid(struct.DstBlock.asString());
+	var portNumber = struct.DstPort.asString();
+	var targetLPort = targetComponent.lports.select(e|e.gid = portNumber).first();
+	var targetRPort = targetComponent.rports.select(e|e.gid = portNumber).first();
+	UsedPortsGid.add(port.gid);
+	if (targetLPort <> null){
+		self.createUndirectedRelationship(port, targetLPort);
+		UsedPortsGid.add(targetLPort.gid);
+	}
+	else if (targetRPort <> null){
+		self.createUndirectedRelationship(port, targetRPort);
+		UsedPortsGid.add(targetRPort.gid);
+	}
+}
+
+operation Any getObjectNumber(){
+	return self.asSequence().select(e|e <> null).size();
+}
+
+operation Any relationshipIsExisted(){
+	return (self.getConnectivity() <> null and self.getConnectivity().select(e|e.DstBlock <> null).notEmpty());
+}
+
+operation Any IsOnlyOneDstBlock(){
+	return (self.DstBlock.asSequence().size() = 1);
+}
+
+operation T!Component getOutputsNumber(){
+	return self.outputs.size();
+}
+
+operation T!Component createSingleDirectedRelationship(output, directedStruct){
+	var targetComponent = self.getComponentByGid(directedStruct.DstBlock.asString());
+	var portNumber = directedStruct.DstPort.asString();
+	var targetInput = targetComponent.inputs.select(e|e.name.content = portNumber).first();
+	if (targetInput <> null){
+		self.createSubDirectedRelationship(output, targetInput);
+	}
+}
+
+operation T!Component createMutiDirectedRelationship(output, directedStruct){
+	var forkNode = self.createFork(output);
+	self.createSubDirectedRelationship(output, forkNode);
+	for (j in directedStruct.DstBlock.getLoopSequence()){
+		var targetComponent = self.getComponentByGid(directedStruct.DstBlock[j].asString());
+		var portNumber = directedStruct.DstPort[j].asString();
+		var targetInput = targetComponent.inputs.select(e|e.name.content = portNumber).first();
+		self.createSubDirectedRelationship(forkNode, targetInput);
+		forkNode.target.add(targetInput);
+	}
+}
+
+operation T!Output getComponentRelationships(relationship){
+	return relationship.select(e|e.source.gid = self.gid and e.source.name.content = self.name.content).asSequence();
+}
+
+operation T!Component createInports(inPorts : Any){
+	if (inPorts.isDefined()){
+		var id = 0.0;
+		for (inport in inPorts){
+			var input = self.createInput();
+			input.gid = inport.asString();
+			input.name.content = id.asString();
+			id = id + 1;
+		}
+	}
+}
+
+operation T!Component createOutports(outPorts : Any){
+	if (outPorts.isDefined()){
+		var id = 0.0;
+		for (outport in outPorts){
+			var output = self.createOutput();
+			output.gid = outport.asString();
+			output.name.content = id.asString();
+			id = id + 1;
+		}
+	}
+}
+
+operation T!Component createLPorts(Conns : Any){
+	if (Conns.isDefined()){
+		for (conn in Conns){
+			var port = self.createLPort();
+			port.gid = conn.asString();
+			port.name.content = "L";
+		}
+	}
+}
+
+operation T!Component createRPorts(Conns : Any){
+	if (Conns.isDefined()){
+		for (conn in Conns){
+			var port = self.createRPort();
+			port.gid = conn.asString();
+			port.name.content = "R";
+		}
+	}
+}
+
+operation T!Component fillComponentRoot(blocks){
+	for (block in blocks){
+		var component = self.createSubComponent();
+		component.fillComponentInfo(block);
+	}
+}
+
+operation T!TerminologyPackage fillTerminologyPackage(componentRoot, blocks){
+	var categoryList = self.createAllCategory(componentRoot, blocks);
+	for (block in blocks){
+		var component = componentRoot.getComponentByGid(block.getBlockGid());
+		var category = categoryList.select(e|e.name.content = component.component_name).first();
+		self.createTerm(component, category);
+	}
+}
+
+operation T!TerminologyPackage createAllCategory(componentRoot, blocks){
+	var categoryNameList = new Sequence;
+	var categoryList = new Sequence;
+	for (block in blocks){
+		var component = componentRoot.getComponentByGid(block.getBlockGid());
+		if (not categoryNameList.includes(component.component_name)){
+			categoryNameList.add(component.component_name);
+			var category = self.createCategory(component.component_name);
+			categoryList.add(category);
+		}
+	}
+	return categoryList;
+}
+
+operation T!TerminologyPackage createTerm(component, category){
+	var term = new T!Term;
+	term.createArtifactElement(component.name.content, "Gid = " + component.gid);
+	term.category.add(category);
+	self.terminologyElement.add(term);
+}
+
+operation T!TerminologyPackage createCategory(name){
+	var category = new T!Category;
+	category.createArtifactElement(name, "");
+	self.terminologyElement.add(category);
+	return category;
+}
+
+operation Any getBlockGid(){
+	return self.handle.asString();
+}
+
+operation T!Component getComponentByGid(gid : String){
+	return self.sub_components.select(e|e.gid = gid).first();
+}
+
+operation T!Component getComponentsByGid(gid : String){
+	return self.sub_components.select(e|e.gid = gid);
+}
+
+operation Any getConnectivity() {
+	return self.PortConnectivity;
+}
+
+operation Any getPortHandles() {
+	return self.PortHandles;
+}
+
+operation T!Component fillComponentInfo(block : Any){
+	self.gid = block.Handle.asString();
+	self.name.content = block.Name.asString();
+	self.component_name = block.BlockType.asString();
+}
+
+operation getAllBlocks(){
+	return S!Block.all;
+}
+
+operation Any createName(name : String){
+	var n = new T!LangString;
+	n.content = name;
+	self.name = n;
+}
+
+operation Any createDescription(description : String){
+	var d = new T!Description;
+	var c = new T!MultiLangString;
+	var v = new T!LangString;
+	v.content = description;
+	c.value.add(v);
+	d.content = c;
+	self.description = d;
+}
+
+operation Any createImplementationConstraint(description: String){
+	var d = new T!ImplementationConstraint;
+	var c = new T!MultiLangString;
+	var v = new T!LangString;
+	v.content = description;
+	c.value.add(v);
+	d.content = c;
+	self.implementationConstraint.add(d);
+}
+
+operation Any createExternalReference(){
+	var e = new T!ExternalReference;
+	var locationContent = new T!LangString;
+	var typeContent = new T!LangString;
+	var metadataContent = new T!LangString;
+	locationContent.content = "location";
+	typeContent.content = "type";
+	metadataContent.content = "metadata";
+	e.location = locationContent;
+	e.type = typeContent;
+	e.metadata = metadataContent;
+	e.createImplementationConstraint("Query");
+	self.externalReference = e;
+}
+
+operation T!DigitalTwinPackage initComponentPackage(){
+	var componentPackage = createComponentPackage();
+	self.componentPackages.add(componentPackage);
+	return componentPackage;
+}
+
+operation T!DigitalTwinPackage initTerminologyPackage(){
+	var terminologyPackage = createTerminologyPackage();
+	self.terminologyPackages.add(terminologyPackage);
+	return terminologyPackage;
+}
+
+operation createDigitalTwinPackage(){
+	var DTPackage = new T!DigitalTwinPackage;
+	return DTPackage;
+}
+
+operation Any createArtifactElement(name : String, description : String){
+	self.createName(name);
+	self.createDescription(description);
+	self.createExternalReference();
+	return self;
+}
+
+operation createComponentPackage(){
+	var cp = new T!ComponentPackage;
+	cp.createComponentElement("New ComponentPackage", "ComponentPackage Description");
+	return cp;
+}
+
+operation createTerminologyPackage(){
+	var terminologyPackage = new T!TerminologyPackage;
+	terminologyPackage.createTerminologyElement("New TerminologyPackage", "TerminologyPackage Description");
+	return terminologyPackage;
+}
+
+operation Any createTerminologyElement(name : String, description : String){
+	return self.createArtifactElement(name, description);
+}
+
+operation Any createComponentElement(name : String, description : String){
+	return self.createArtifactElement(name, description);
+}
+
+operation createComponent(){
+	var component = new T!Component;
+	component.createComponentElement("Component", "");
+	component.externalReference.createImplementationConstraint("Query Result");
+	component.externalReference.createImplementationConstraint("Simulation Variable");
+	component.externalReference.createImplementationConstraint("Simulation Result");
+	return component;
+}
+
+operation T!ComponentPackage createRootComponent(){
+	var component = createComponent();
+	self.components.add(component);
+	return component;
+}
+
+operation T!Component createSubComponent(){
+	var component = createComponent();
+	self.sub_components.add(component);
+	return component;
+}
+
+operation Any createReading(){
+	var reading = new T!Reading;
+	self.reading = reading;
+}
+
+operation T!Component createLPort(){
+	var lport = new T!LPort;
+	lport = lport.createComponentElement("lport", "");
+	lport.createReading();
+	self.lports.add(lport);
+	return lport;
+}
+
+operation T!Component createRPort(){
+	var rport = new T!RPort;
+	rport = rport.createComponentElement("O", "");
+	rport.createReading();
+	self.rports.add(rport);
+	return rport;
+}
+
+operation T!Component createOutput(){
+	var output = new T!Output;
+	output = output.createComponentElement("O", "");
+	output.createReading();
+	self.outputs.add(output);
+	return output;
+}
+
+operation T!Component createInput(){
+	var input = new T!Input;
+	input = input.createComponentElement("I", "");
+	input.createReading();
+	self.inputs.add(input);
+	return input;
+}
+
+operation createDirectedRelationship(source : Any, target : Any){
+	var directedRelationship = new T!DirectedRelationship;
+	directedRelationship.source = source;
+	directedRelationship.target = target;
+	return directedRelationship;
+}
+
+operation T!Component createSubDirectedRelationship(source : Any, target : Any){
+	var directedRelationship = createDirectedRelationship(source, target);
+	self.sub_components.add(directedRelationship);
+	return directedRelationship;
+}
+
+operation T!Component createFork(source : T!Output){
+	var fork = new T!Fork;
+	fork = fork.createComponentElement(source.name.content, "");
+	fork.createReading();
+	fork.gid = source.gid;
+	fork.source = source;
+	self.sub_components.add(fork);
+	return fork;
+}
+
+operation T!Component createSwitch(){
+	var switchNode = new T!Switch;
+	switchNode = switchNode.createComponentElement("S", "");
+	switchNode.createReading();
+	self.sub_components.add(switchNode);
+	return switchNode;
+}
+
+operation showAllBlockInfotation(){
+	var blocks = S!Block.all;
+	blocks.println();
+	for (b in blocks){
+		"_______________________________________________".println();
+//		b.println();
+		("b.Path                = "+b.Path).println();
+		("b.Name                = "+b.Name).println();
+		("b.Handle              = "+b.Handle).println();
+		("b.BlockType           = "+b.BlockType).println();
+		("b.PortHandles.Inport  = "+b.PortHandles.Inport).println();
+		("b.PortHandles.Outport = "+b.PortHandles.Outport).println();
+//		("b.PortHandles.Enable  = "+b.PortHandles.Enable).println();
+//		("b.PortHandles.Trigger = "+b.PortHandles.Trigger).println();
+//		("b.PortHandles.State   = "+b.PortHandles.State).println();
+		("b.PortHandles.LConn   = "+b.PortHandles.LConn).println();
+		("b.PortHandles.RConn   = "+b.PortHandles.RConn).println();
+//		("b.PortHandles.Ifaction= "+b.PortHandles.Ifaction).println();
+//		("b.PortHandles.Reset   = "+b.PortHandles.Reset).println();
+//		("b.PortHandles.Event   = "+b.PortHandles.Event).println();
+		for (line in b.portconnectivity){
+			if (line.isDefined()){
+				"+++++++++++++++++++++++".println();
+				("line.SrcBlock         = "+line.SrcBlock).println();
+				("line.SrcPort          = "+line.SrcPort).println();
+				("line.DstBlock         = "+line.DstBlock).println();
+				("line.DstPort          = "+line.DstPort).println();
+			}
+		}
+	}
+}
