@@ -29,5 +29,17 @@
            actionClass="cnsa.ee.digital.twin.design.utils.ClearQueryResultAction"
            id="cnsa.ee.digital.twin.design.clear.query.result">
      </javaActions>
+     <javaActions
+           actionClass="cnsa.ee.digital.twin.design.utils.ImportSimulinkAction"
+           id="cnsa.ee.digital.twin.design.import.simulink.action">
+     </javaActions>
+     <javaActions
+           actionClass="cnsa.ee.digital.twin.design.utils.SimulateAction_Simulink"
+           id="cnsa.ee.digital.twin.design.simulate.simulink.action">
+     </javaActions>
+     <javaActions
+           actionClass="cnsa.ee.digital.twin.design.utils.ClearSimulationResultAction"
+           id="cnsa.ee.digital.twin.design.clear.simulation.result">
+     </javaActions>
   </extension>
 </plugin>
