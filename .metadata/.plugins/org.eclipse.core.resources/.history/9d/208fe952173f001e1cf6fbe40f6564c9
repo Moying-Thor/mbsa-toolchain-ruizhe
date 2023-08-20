@@ -1,0 +1,36 @@
+/**
+ */
+package component;
+
+import org.eclipse.emf.common.util.EList;
+
+/**
+ * <!-- begin-user-doc -->
+ * A representation of the model object '<em><b>Undirected Relationship</b></em>'.
+ * <!-- end-user-doc -->
+ *
+ * <p>
+ * The following features are supported:
+ * </p>
+ * <ul>
+ *   <li>{@link component.UndirectedRelationship#getPorts <em>Ports</em>}</li>
+ * </ul>
+ *
+ * @see component.Component_Package#getUndirectedRelationship()
+ * @model
+ * @generated
+ */
+public interface UndirectedRelationship extends ComponentRelationship {
+	/**
+	 * Returns the value of the '<em><b>Ports</b></em>' reference list.
+	 * The list contents are of type {@link component.ComponentElement}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Ports</em>' reference list.
+	 * @see component.Component_Package#getUndirectedRelationship_Ports()
+	 * @model
+	 * @generated
+	 */
+	EList<ComponentElement> getPorts();
+
+} // UndirectedRelationship

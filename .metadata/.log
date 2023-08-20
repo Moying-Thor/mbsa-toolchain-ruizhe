@@ -1,0 +1,628 @@
+!SESSION 2023-08-14 16:42:52.516 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=17.0.7
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=zh_CN
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.ui 2 0 2023-08-14 16:42:57.795
+!MESSAGE Warnings while parsing the key bindings from the 'org.eclipse.ui.commands' and 'org.eclipse.ui.bindings' extension point
+!SUBENTRY 1 org.eclipse.ui 2 0 2023-08-14 16:42:57.795
+!MESSAGE Cannot bind to an undefined command: plug-in='org.eclipse.xtext.ui', id='org.eclipse.xtext.ui.editor.outline.QuickOutline'
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-08-14 16:43:01.151
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\yangr'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2023-08-16 14:43:34.696 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=17.0.7
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=zh_CN
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.core.resources 2 10035 2023-08-16 14:43:41.821
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.ui 2 0 2023-08-16 14:43:42.144
+!MESSAGE Warnings while parsing the key bindings from the 'org.eclipse.ui.commands' and 'org.eclipse.ui.bindings' extension point
+!SUBENTRY 1 org.eclipse.ui 2 0 2023-08-16 14:43:42.144
+!MESSAGE Cannot bind to an undefined command: plug-in='org.eclipse.xtext.ui', id='org.eclipse.xtext.ui.editor.outline.QuickOutline'
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-08-16 14:43:45.340
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\yangr'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.emf.common 2 0 2023-08-18 18:42:13.784
+!MESSAGE An exception was ignored during command execution
+!STACK 0
+org.eclipse.emf.common.util.WrappedException: An exception was ignored during command execution
+	at org.eclipse.emf.common.command.BasicCommandStack.handleError(BasicCommandStack.java:281)
+	at org.eclipse.emf.common.command.BasicCommandStack.execute(BasicCommandStack.java:112)
+	at org.eclipse.emf.codegen.ecore.genmodel.presentation.GenModelEditor$4.execute(GenModelEditor.java:780)
+	at org.eclipse.emf.codegen.ecore.genmodel.presentation.GenModelEditor.initialize(GenModelEditor.java:644)
+	at org.eclipse.emf.codegen.ecore.genmodel.presentation.GenModelEditor.createPages(GenModelEditor.java:1158)
+	at org.eclipse.ui.part.MultiPageEditorPart.createPartControl(MultiPageEditorPart.java:333)
+	at org.eclipse.ui.internal.e4.compatibility.CompatibilityPart.createPartControl(CompatibilityPart.java:158)
+	at org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor.createPartControl(CompatibilityEditor.java:96)
+	at org.eclipse.ui.internal.e4.compatibility.CompatibilityPart.create(CompatibilityPart.java:365)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:58)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.processAnnotated(InjectorImpl.java:999)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.processAnnotated(InjectorImpl.java:964)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.internalInject(InjectorImpl.java:140)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.internalMake(InjectorImpl.java:405)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.make(InjectorImpl.java:332)
+	at org.eclipse.e4.core.contexts.ContextInjectionFactory.make(ContextInjectionFactory.java:202)
+	at org.eclipse.e4.ui.internal.workbench.ReflectionContributionFactory.createFromBundle(ReflectionContributionFactory.java:91)
+	at org.eclipse.e4.ui.internal.workbench.ReflectionContributionFactory.doCreate(ReflectionContributionFactory.java:60)
+	at org.eclipse.e4.ui.internal.workbench.ReflectionContributionFactory.create(ReflectionContributionFactory.java:42)
+	at org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer.createWidget(ContributedPartRenderer.java:132)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createWidget(PartRenderingEngine.java:999)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:659)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:765)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$2.run(PartRenderingEngine.java:730)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createGui(PartRenderingEngine.java:714)
+	at org.eclipse.e4.ui.internal.workbench.PartServiceImpl.lambda$0(PartServiceImpl.java:104)
+	at org.eclipse.e4.ui.services.internal.events.UIEventHandler.lambda$0(UIEventHandler.java:38)
+	at org.eclipse.swt.widgets.Synchronizer.syncExec(Synchronizer.java:236)
+	at org.eclipse.ui.internal.UISynchronizer.syncExec(UISynchronizer.java:133)
+	at org.eclipse.swt.widgets.Display.syncExec(Display.java:4742)
+	at org.eclipse.e4.ui.workbench.swt.DisplayUISynchronize.syncExec(DisplayUISynchronize.java:34)
+	at org.eclipse.e4.ui.services.internal.events.UIEventHandler.handleEvent(UIEventHandler.java:38)
+	at org.eclipse.equinox.internal.event.EventHandlerWrapper.handleEvent(EventHandlerWrapper.java:205)
+	at org.eclipse.equinox.internal.event.EventHandlerTracker.dispatchEvent(EventHandlerTracker.java:203)
+	at org.eclipse.equinox.internal.event.EventHandlerTracker.dispatchEvent(EventHandlerTracker.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:234)
+	at org.eclipse.osgi.framework.eventmgr.ListenerQueue.dispatchEventSynchronous(ListenerQueue.java:151)
+	at org.eclipse.equinox.internal.event.EventAdminImpl.dispatchEvent(EventAdminImpl.java:133)
+	at org.eclipse.equinox.internal.event.EventAdminImpl.sendEvent(EventAdminImpl.java:75)
+	at org.eclipse.equinox.internal.event.EventComponent.sendEvent(EventComponent.java:44)
+	at org.eclipse.e4.ui.services.internal.events.EventBroker.send(EventBroker.java:55)
+	at org.eclipse.e4.ui.internal.workbench.UIEventPublisher.notifyChanged(UIEventPublisher.java:63)
+	at org.eclipse.emf.common.notify.impl.BasicNotifierImpl.eNotify(BasicNotifierImpl.java:424)
+	at org.eclipse.e4.ui.model.application.ui.impl.ElementContainerImpl.setSelectedElementGen(ElementContainerImpl.java:170)
+	at org.eclipse.e4.ui.model.application.ui.impl.ElementContainerImpl.setSelectedElement(ElementContainerImpl.java:188)
+	at org.eclipse.e4.ui.internal.workbench.ModelServiceImpl.showElementInWindow(ModelServiceImpl.java:660)
+	at org.eclipse.e4.ui.internal.workbench.ModelServiceImpl.bringToTop(ModelServiceImpl.java:624)
+	at org.eclipse.e4.ui.internal.workbench.PartServiceImpl.delegateBringToTop(PartServiceImpl.java:786)
+	at org.eclipse.e4.ui.internal.workbench.PartServiceImpl.bringToTop(PartServiceImpl.java:400)
+	at org.eclipse.e4.ui.internal.workbench.PartServiceImpl.showPart(PartServiceImpl.java:1260)
+	at org.eclipse.ui.internal.WorkbenchPage.busyOpenEditor(WorkbenchPage.java:3195)
+	at org.eclipse.ui.internal.WorkbenchPage.lambda$9(WorkbenchPage.java:3100)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:74)
+	at org.eclipse.ui.internal.WorkbenchPage.openEditor(WorkbenchPage.java:3098)
+	at org.eclipse.ui.internal.WorkbenchPage.openEditor(WorkbenchPage.java:3068)
+	at org.eclipse.ui.internal.WorkbenchPage.openEditor(WorkbenchPage.java:3059)
+	at org.eclipse.ui.ide.IDE.openEditor(IDE.java:569)
+	at org.eclipse.ui.ide.IDE.openEditor(IDE.java:524)
+	at org.eclipse.jdt.internal.ui.javaeditor.EditorUtility.openInEditor(EditorUtility.java:367)
+	at org.eclipse.jdt.internal.ui.javaeditor.EditorUtility.openInEditor(EditorUtility.java:172)
+	at org.eclipse.jdt.ui.actions.OpenAction.run(OpenAction.java:288)
+	at org.eclipse.jdt.ui.actions.OpenAction.run(OpenAction.java:254)
+	at org.eclipse.jdt.ui.actions.SelectionDispatchAction.dispatchRun(SelectionDispatchAction.java:274)
+	at org.eclipse.jdt.ui.actions.SelectionDispatchAction.run(SelectionDispatchAction.java:252)
+	at org.eclipse.jdt.internal.ui.navigator.OpenAndExpand.run(OpenAndExpand.java:53)
+	at org.eclipse.ui.actions.RetargetAction.run(RetargetAction.java:215)
+	at org.eclipse.ui.navigator.CommonNavigatorManager$1.open(CommonNavigatorManager.java:183)
+	at org.eclipse.ui.OpenAndLinkWithEditorHelper$InternalListener.open(OpenAndLinkWithEditorHelper.java:48)
+	at org.eclipse.jface.viewers.StructuredViewer$2.run(StructuredViewer.java:802)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.jface.util.SafeRunnable.run(SafeRunnable.java:174)
+	at org.eclipse.jface.viewers.StructuredViewer.fireOpen(StructuredViewer.java:799)
+	at org.eclipse.jface.viewers.StructuredViewer.handleOpen(StructuredViewer.java:1118)
+	at org.eclipse.ui.navigator.CommonViewer.handleOpen(CommonViewer.java:454)
+	at org.eclipse.jface.util.OpenStrategy.fireOpenEvent(OpenStrategy.java:275)
+	at org.eclipse.jface.util.OpenStrategy.access$2(OpenStrategy.java:270)
+	at org.eclipse.jface.util.OpenStrategy$1.handleEvent(OpenStrategy.java:310)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:89)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4209)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1043)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4026)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3626)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1157)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1046)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:644)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:551)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:156)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:401)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:654)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:591)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1462)
+Caused by: java.lang.ClassCastException: class org.eclipse.emf.ecore.change.impl.ChangeDescriptionImpl cannot be cast to class org.eclipse.emf.codegen.ecore.genmodel.GenBase (org.eclipse.emf.ecore.change.impl.ChangeDescriptionImpl is in unnamed module of loader org.eclipse.osgi.internal.loader.EquinoxClassLoader @6657d6d9; org.eclipse.emf.codegen.ecore.genmodel.GenBase is in unnamed module of loader org.eclipse.osgi.internal.loader.EquinoxClassLoader @2cd31214)
+	at org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl.getGenModel(GenPackageImpl.java:1348)
+	at org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl.eIsSet(GenPackageImpl.java:1994)
+	at org.eclipse.emf.ecore.impl.BasicEObjectImpl.eIsSet(BasicEObjectImpl.java:1280)
+	at org.eclipse.emf.ecore.change.util.BasicChangeRecorder.eliminateEmptyChanges(BasicChangeRecorder.java:161)
+	at org.eclipse.emf.ecore.change.util.BasicChangeRecorder.consolidateChanges(BasicChangeRecorder.java:143)
+	at org.eclipse.emf.ecore.change.util.ChangeRecorder.consolidateChanges(ChangeRecorder.java:247)
+	at org.eclipse.emf.ecore.change.util.BasicChangeRecorder.endRecording(BasicChangeRecorder.java:117)
+	at org.eclipse.emf.edit.command.ChangeCommand.execute(ChangeCommand.java:134)
+	at org.eclipse.emf.common.command.BasicCommandStack.execute(BasicCommandStack.java:78)
+	... 106 more
+
+!ENTRY org.eclipse.epsilon.common.dt 1 0 2023-08-18 18:42:27.130
+!MESSAGE Metamodel \cnsa.ee.digital.twin\metamodel\base.emf registered successfully
+
+!ENTRY org.eclipse.epsilon.common.dt 1 0 2023-08-18 18:42:28.760
+!MESSAGE Metamodel \cnsa.ee.digital.twin\metamodel\component.ecore registered successfully
+
+!ENTRY org.eclipse.epsilon.common.dt 1 0 2023-08-18 18:42:30.540
+!MESSAGE Metamodel \cnsa.ee.digital.twin\metamodel\digital_twin.ecore registered successfully
+
+!ENTRY org.eclipse.epsilon.common.dt 1 0 2023-08-18 18:42:32.973
+!MESSAGE Metamodel \cnsa.ee.digital.twin\metamodel\terminology.ecore registered successfully
+
+!ENTRY org.eclipse.epsilon.common.dt 1 0 2023-08-18 18:42:35.077
+!MESSAGE Metamodel \cnsa.ee.digital.twin\metamodel\artifact.ecore registered successfully
+
+!ENTRY org.eclipse.epsilon.common.dt 1 0 2023-08-20 09:45:57.147
+!MESSAGE Metamodel \cnsa.ee.digital.twin\metamodel\base.ecore registered successfully
+
+!ENTRY org.eclipse.epsilon.common.dt 1 0 2023-08-20 09:48:28.444
+!MESSAGE Metamodel \cnsa.ee.digital.twin\metamodel\terminology.ecore registered successfully
+
+!ENTRY org.eclipse.epsilon.common.dt 1 0 2023-08-20 09:48:30.638
+!MESSAGE Metamodel \cnsa.ee.digital.twin\metamodel\digital_twin.ecore registered successfully
+
+!ENTRY org.eclipse.epsilon.common.dt 1 0 2023-08-20 09:48:33.187
+!MESSAGE Metamodel \cnsa.ee.digital.twin\metamodel\artifact.ecore registered successfully
+
+!ENTRY org.eclipse.epsilon.common.dt 1 0 2023-08-20 09:48:34.904
+!MESSAGE Metamodel \cnsa.ee.digital.twin\metamodel\base.ecore registered successfully
+
+!ENTRY org.eclipse.epsilon.common.dt 1 0 2023-08-20 09:48:36.785
+!MESSAGE Metamodel \cnsa.ee.digital.twin\metamodel\component.ecore registered successfully
+
+!ENTRY org.eclipse.epsilon.common.dt 1 0 2023-08-20 10:41:32.942
+!MESSAGE Metamodel \cnsa.ee.digital.twin\metamodel\component.ecore registered successfully
+
+!ENTRY org.eclipse.epsilon.common.dt 1 0 2023-08-20 10:41:35.120
+!MESSAGE Metamodel \cnsa.ee.digital.twin\metamodel\digital_twin.ecore registered successfully
+
+!ENTRY org.eclipse.epsilon.common.dt 1 0 2023-08-20 10:41:36.869
+!MESSAGE Metamodel \cnsa.ee.digital.twin\metamodel\terminology.ecore registered successfully
+
+!ENTRY org.eclipse.epsilon.common.dt 1 0 2023-08-20 10:41:39.013
+!MESSAGE Metamodel \cnsa.ee.digital.twin\metamodel\base.ecore registered successfully
+
+!ENTRY org.eclipse.epsilon.common.dt 1 0 2023-08-20 10:41:41.085
+!MESSAGE Metamodel \cnsa.ee.digital.twin\metamodel\artifact.emf registered successfully
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 10:41:59.811
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/artifact
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 10:41:59.812
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/base
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 10:41:59.813
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/component
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 10:41:59.813
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/digital_twin
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 10:41:59.815
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/terminology
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 10:42:09.212
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/artifact
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 10:42:09.212
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/base
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 10:42:09.212
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/digital_twin
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 10:42:09.213
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/terminology
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 10:51:46.042
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/artifact
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 10:51:46.042
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/base
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 10:51:46.043
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/digital_twin
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 10:51:46.043
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/terminology
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 10:54:17.372
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/artifact
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 10:54:17.373
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/base
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 10:54:17.374
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/component
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 10:54:17.375
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/digital_twin
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 10:54:17.375
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/terminology
+
+!ENTRY org.eclipse.epsilon.common.dt 1 0 2023-08-20 10:54:28.822
+!MESSAGE Metamodel \cnsa.ee.digital.twin\metamodel\base.ecore registered successfully
+
+!ENTRY org.eclipse.epsilon.common.dt 1 0 2023-08-20 10:54:30.931
+!MESSAGE Metamodel \cnsa.ee.digital.twin\metamodel\component.ecore registered successfully
+
+!ENTRY org.eclipse.epsilon.common.dt 1 0 2023-08-20 10:54:33.323
+!MESSAGE Metamodel \cnsa.ee.digital.twin\metamodel\digital_twin.ecore registered successfully
+
+!ENTRY org.eclipse.epsilon.common.dt 1 0 2023-08-20 10:54:35.245
+!MESSAGE Metamodel \cnsa.ee.digital.twin\metamodel\terminology.ecore registered successfully
+
+!ENTRY org.eclipse.epsilon.common.dt 1 0 2023-08-20 10:54:37.013
+!MESSAGE Metamodel \cnsa.ee.digital.twin\metamodel\artifact.ecore registered successfully
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 10:54:38.696
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/artifact
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 10:54:38.697
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/base
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 10:54:38.697
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/component
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 10:54:38.697
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/digital_twin
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 10:54:38.698
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/terminology
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 10:54:41.015
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/artifact
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 10:54:41.016
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/base
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 10:54:41.017
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/component
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 10:54:41.017
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/digital_twin
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 10:54:41.018
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/terminology
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 10:54:58.583
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/artifact
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 10:54:58.584
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/base
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 10:54:58.585
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/component
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 10:54:58.585
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/digital_twin
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 10:54:58.585
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/terminology
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 10:54:58.598
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/artifact
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 10:54:58.598
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/base
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 10:54:58.600
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/component
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 10:54:58.600
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/digital_twin
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 10:54:58.601
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/terminology
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 11:18:59.442
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/artifact
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 11:18:59.443
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/base
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 11:18:59.444
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/component
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 11:18:59.445
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/digital_twin
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 11:18:59.445
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/terminology
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 11:19:41.755
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/artifact
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 11:19:41.756
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/base
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 11:19:41.757
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/component
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 11:19:41.757
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/digital_twin
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 11:19:41.757
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/terminology
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 11:19:48.755
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/artifact
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 11:19:48.755
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/base
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 11:19:48.755
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/component
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 11:19:48.756
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/digital_twin
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 11:19:48.757
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/terminology
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 11:21:26.720
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/artifact
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 11:21:26.721
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/base
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 11:21:26.721
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/component
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 11:21:26.721
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/digital_twin
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 11:21:26.722
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/terminology
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 11:21:26.741
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/artifact
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 11:21:26.741
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/base
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 11:21:26.742
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/component
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 11:21:26.742
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/digital_twin
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 11:21:26.743
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/terminology
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 11:21:47.962
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/terminology
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 11:21:47.963
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/base
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 11:21:47.975
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/terminology
+
+!ENTRY org.eclipse.sirius.editor 4 0 2023-08-20 11:21:47.976
+!MESSAGE Invalid ressource access for the metamodel http://cnsa.ee.digital.twin/base
+!SESSION 2023-08-20 13:05:17.249 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=17.0.7
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=zh_CN
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.ui 2 0 2023-08-20 13:05:20.312
+!MESSAGE Warnings while parsing the key bindings from the 'org.eclipse.ui.commands' and 'org.eclipse.ui.bindings' extension point
+!SUBENTRY 1 org.eclipse.ui 2 0 2023-08-20 13:05:20.312
+!MESSAGE Cannot bind to an undefined command: plug-in='org.eclipse.xtext.ui', id='org.eclipse.xtext.ui.editor.outline.QuickOutline'
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-08-20 13:05:23.963
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\yangr'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.epsilon.common.dt 1 0 2023-08-20 13:05:42.969
+!MESSAGE Metamodel \cnsa.ee.digital.twin\metamodel\base.ecore registered successfully
+
+!ENTRY org.eclipse.epsilon.common.dt 1 0 2023-08-20 13:05:44.790
+!MESSAGE Metamodel \cnsa.ee.digital.twin\metamodel\artifact.ecore registered successfully
+
+!ENTRY org.eclipse.epsilon.common.dt 1 0 2023-08-20 13:05:53.033
+!MESSAGE Metamodel \cnsa.ee.digital.twin\metamodel\digital_twin.ecore registered successfully
+
+!ENTRY org.eclipse.epsilon.common.dt 1 0 2023-08-20 13:06:10.462
+!MESSAGE Metamodel \cnsa.ee.digital.twin\metamodel\component.emf registered successfully
+
+!ENTRY org.eclipse.epsilon.common.dt 1 0 2023-08-20 13:06:12.103
+!MESSAGE Metamodel \cnsa.ee.digital.twin\metamodel\component.ecore registered successfully
+
+!ENTRY org.eclipse.epsilon.common.dt 1 0 2023-08-20 13:06:14.892
+!MESSAGE Metamodel \cnsa.ee.digital.twin\metamodel\digital_twin.ecore registered successfully
+
+!ENTRY org.eclipse.epsilon.common.dt 1 0 2023-08-20 13:06:14.893
+!MESSAGE Metamodel \cnsa.ee.digital.twin\metamodel\terminology.ecore registered successfully
+!SESSION 2023-08-20 13:12:03.090 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=17.0.7
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=zh_CN
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.ui 2 0 2023-08-20 13:12:13.589
+!MESSAGE Warnings while parsing the key bindings from the 'org.eclipse.ui.commands' and 'org.eclipse.ui.bindings' extension point
+!SUBENTRY 1 org.eclipse.ui 2 0 2023-08-20 13:12:13.589
+!MESSAGE Cannot bind to an undefined command: plug-in='org.eclipse.xtext.ui', id='org.eclipse.xtext.ui.editor.outline.QuickOutline'
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-08-20 13:12:17.990
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\yangr'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.epsilon.common.dt 1 0 2023-08-20 14:53:17.640
+!MESSAGE Metamodel \cnsa.ee.digital.twin\metamodel\artifact.ecore registered successfully
+
+!ENTRY org.eclipse.epsilon.common.dt 1 0 2023-08-20 14:53:17.640
+!MESSAGE Metamodel \cnsa.ee.digital.twin\metamodel\base.ecore registered successfully
+
+!ENTRY org.eclipse.epsilon.common.dt 1 0 2023-08-20 14:53:17.640
+!MESSAGE Metamodel \cnsa.ee.digital.twin\metamodel\component.ecore registered successfully
+
+!ENTRY org.eclipse.epsilon.common.dt 1 0 2023-08-20 14:53:17.640
+!MESSAGE Metamodel \cnsa.ee.digital.twin\metamodel\digital_twin.ecore registered successfully
+
+!ENTRY org.eclipse.epsilon.common.dt 1 0 2023-08-20 14:53:17.641
+!MESSAGE Metamodel \cnsa.ee.digital.twin\metamodel\terminology.ecore registered successfully
+!SESSION 2023-08-20 18:39:39.733 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=17.0.7
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=zh_CN
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.core.resources 4 567 2023-08-20 18:39:48.361
+!MESSAGE Workspace restored, but some problems occurred.
+!SUBENTRY 1 org.eclipse.core.resources 4 567 2023-08-20 18:39:48.361
+!MESSAGE Could not read metadata for '.org.eclipse.egit.core.cmp'.
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException(/.org.eclipse.egit.core.cmp)[567]: java.lang.Exception: The project description file (.project) for '.org.eclipse.egit.core.cmp' is missing.  This file contains important information about the project.  The project will not function properly until this file is restored.
+	at org.eclipse.core.internal.resources.ResourceException.provideStackTrace(ResourceException.java:42)
+	at org.eclipse.core.internal.resources.ResourceException.<init>(ResourceException.java:38)
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.read(FileSystemResourceManager.java:908)
+	at org.eclipse.core.internal.resources.SaveManager.restoreMetaInfo(SaveManager.java:888)
+	at org.eclipse.core.internal.resources.SaveManager.restoreMetaInfo(SaveManager.java:868)
+	at org.eclipse.core.internal.resources.SaveManager.restore(SaveManager.java:724)
+	at org.eclipse.core.internal.resources.SaveManager.startup(SaveManager.java:1555)
+	at org.eclipse.core.internal.resources.Workspace.startup(Workspace.java:2480)
+	at org.eclipse.core.internal.resources.Workspace.open(Workspace.java:2231)
+	at org.eclipse.core.resources.ResourcesPlugin.start(ResourcesPlugin.java:475)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$2.run(BundleContextImpl.java:814)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$2.run(BundleContextImpl.java:1)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:569)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.startActivator(BundleContextImpl.java:806)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.start(BundleContextImpl.java:763)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle.startWorker0(EquinoxBundle.java:1028)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$EquinoxModule.startWorker(EquinoxBundle.java:371)
+	at org.eclipse.osgi.container.Module.doStart(Module.java:605)
+	at org.eclipse.osgi.container.Module.start(Module.java:468)
+	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:511)
+	at org.eclipse.osgi.internal.hooks.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:117)
+	at org.eclipse.osgi.internal.loader.classpath.ClasspathManager.findLocalClass(ClasspathManager.java:572)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.findLocalClass(ModuleClassLoader.java:345)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:401)
+	at org.eclipse.osgi.internal.loader.sources.SingleSourcePackage.loadClass(SingleSourcePackage.java:41)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:476)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.loadClass(ModuleClassLoader.java:170)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:520)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:153)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:401)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:654)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:591)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1462)
+!SUBENTRY 2 org.eclipse.core.resources 4 567 2023-08-20 18:39:48.361
+!MESSAGE The project description file (.project) for '.org.eclipse.egit.core.cmp' is missing.  This file contains important information about the project.  The project will not function properly until this file is restored.
+!STACK 0
+java.lang.Exception: The project description file (.project) for '.org.eclipse.egit.core.cmp' is missing.  This file contains important information about the project.  The project will not function properly until this file is restored.
+	at org.eclipse.core.internal.resources.ResourceException.provideStackTrace(ResourceException.java:42)
+	at org.eclipse.core.internal.resources.ResourceException.<init>(ResourceException.java:38)
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.read(FileSystemResourceManager.java:908)
+	at org.eclipse.core.internal.resources.SaveManager.restoreMetaInfo(SaveManager.java:888)
+	at org.eclipse.core.internal.resources.SaveManager.restoreMetaInfo(SaveManager.java:868)
+	at org.eclipse.core.internal.resources.SaveManager.restore(SaveManager.java:724)
+	at org.eclipse.core.internal.resources.SaveManager.startup(SaveManager.java:1555)
+	at org.eclipse.core.internal.resources.Workspace.startup(Workspace.java:2480)
+	at org.eclipse.core.internal.resources.Workspace.open(Workspace.java:2231)
+	at org.eclipse.core.resources.ResourcesPlugin.start(ResourcesPlugin.java:475)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$2.run(BundleContextImpl.java:814)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$2.run(BundleContextImpl.java:1)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:569)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.startActivator(BundleContextImpl.java:806)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.start(BundleContextImpl.java:763)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle.startWorker0(EquinoxBundle.java:1028)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$EquinoxModule.startWorker(EquinoxBundle.java:371)
+	at org.eclipse.osgi.container.Module.doStart(Module.java:605)
+	at org.eclipse.osgi.container.Module.start(Module.java:468)
+	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:511)
+	at org.eclipse.osgi.internal.hooks.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:117)
+	at org.eclipse.osgi.internal.loader.classpath.ClasspathManager.findLocalClass(ClasspathManager.java:572)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.findLocalClass(ModuleClassLoader.java:345)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:401)
+	at org.eclipse.osgi.internal.loader.sources.SingleSourcePackage.loadClass(SingleSourcePackage.java:41)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:476)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.loadClass(ModuleClassLoader.java:170)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:520)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:153)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:401)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:654)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:591)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1462)
+
+!ENTRY org.eclipse.ui 2 0 2023-08-20 18:39:48.784
+!MESSAGE Warnings while parsing the key bindings from the 'org.eclipse.ui.commands' and 'org.eclipse.ui.bindings' extension point
+!SUBENTRY 1 org.eclipse.ui 2 0 2023-08-20 18:39:48.784
+!MESSAGE Cannot bind to an undefined command: plug-in='org.eclipse.xtext.ui', id='org.eclipse.xtext.ui.editor.outline.QuickOutline'
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-08-20 18:39:52.706
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\yangr'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2023-08-20 18:47:48.792 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=17.0.7
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=zh_CN
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.ui 2 0 2023-08-20 18:47:53.272
+!MESSAGE Warnings while parsing the key bindings from the 'org.eclipse.ui.commands' and 'org.eclipse.ui.bindings' extension point
+!SUBENTRY 1 org.eclipse.ui 2 0 2023-08-20 18:47:53.272
+!MESSAGE Cannot bind to an undefined command: plug-in='org.eclipse.xtext.ui', id='org.eclipse.xtext.ui.editor.outline.QuickOutline'
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-08-20 18:47:58.158
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\yangr'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.

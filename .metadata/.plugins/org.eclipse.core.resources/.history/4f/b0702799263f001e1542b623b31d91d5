@@ -1,0 +1,51 @@
+#
+
+pluginName = cnsa.ee.digital.twin Edit Support
+providerName = www.example.org
+
+_UI_CreateChild_text = {0}
+_UI_CreateChild_text2 = {1} {0}
+_UI_CreateChild_text3 = {1}
+_UI_CreateChild_tooltip = Create New {0} Under {1} Feature
+_UI_CreateChild_description = Create a new child of type {0} for the {1} feature of the selected {2}.
+_UI_CreateSibling_description = Create a new sibling of type {0} for the selected {2}, under the {1} feature of their parent.
+
+_UI_PropertyDescriptor_description = The {0} of the {1}
+
+_UI_Element_type = Element
+_UI_DTElement_type = DT Element
+_UI_ModelElement_type = Model Element
+_UI_LangString_type = Lang String
+_UI_MultiLangString_type = Multi Lang String
+_UI_UtilityElement_type = Utility Element
+_UI_ExternalReference_type = External Reference
+_UI_Description_type = Description
+_UI_ImplementationConstraint_type = Implementation Constraint
+_UI_Note_type = Note
+_UI_TaggedValue_type = Tagged Value
+_UI_ArtifactElement_type = Artifact Element
+_UI_Unknown_type = Object
+
+_UI_Unknown_datatype= Value
+
+_UI_DTElement_gid_feature = Gid
+_UI_DTElement_isCitation_feature = Is Citation
+_UI_DTElement_isAbstract_feature = Is Abstract
+_UI_DTElement_citedElement_feature = Cited Element
+_UI_ModelElement_name_feature = Name
+_UI_ModelElement_description_feature = Description
+_UI_ModelElement_implementationConstraint_feature = Implementation Constraint
+_UI_ModelElement_note_feature = Note
+_UI_ModelElement_taggedValue_feature = Tagged Value
+_UI_ModelElement_externalReference_feature = External Reference
+_UI_LangString_lang_feature = Lang
+_UI_LangString_content_feature = Content
+_UI_MultiLangString_value_feature = Value
+_UI_UtilityElement_content_feature = Content
+_UI_ExternalReference_location_feature = Location
+_UI_ExternalReference_type_feature = Type
+_UI_ExternalReference_metadata_feature = Metadata
+_UI_ExternalReference_implementationConstraint_feature = Implementation Constraint
+_UI_TaggedValue_key_feature = Key
+_UI_Unknown_feature = Unspecified
+
